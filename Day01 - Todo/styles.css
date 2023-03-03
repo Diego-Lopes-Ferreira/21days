@@ -1,0 +1,130 @@
+:root {
+  --bg-dark: #0f0f0f;
+  --bg-default: #282828;
+  --bg-light: #454545;
+
+  --fg-dark: #d6d6d6;
+  --fg-default: #f0f0f0;
+
+  --primary: #BB4D00;
+}
+
+/* GLOBAL STYLES (AND RESETS) */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: monospace;
+  font-size: 14px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 1rem 0rem 1rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  display: block;
+  background-color: inherit;
+  color: inherit;
+  border: 1px solid var(--fg-default);
+  outline: none;
+}
+
+h1 {
+  padding: 1rem;
+  font-weight: bold;
+}
+
+/* UTILITIES */
+.margin-bottom {
+  margin-bottom: 6rem;
+}
+
+.removing {
+  overflow: hidden;
+  /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+  animation: slide-to-left, fade-vertical;
+  animation-duration: 500ms, 500ms;
+  animation-delay: 0s, 500ms;
+  animation-fill-mode: forwards, forwards;
+}
+
+@keyframes slide-to-left {
+  100% {
+    transform: translateX(-120%);
+  }
+}
+
+@keyframes fade-vertical {
+  100% {
+    height: 0px;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* COMPOSITIONS */
+main {
+  width: 100%;
+  max-width: 40rem;
+  min-height: calc(100vh - 7rem);
+  background-color: var(--bg-default);
+  color: var(--fg-default);
+  border-radius: 1rem;
+  overflow-x: hidden;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: auto;
+  padding: 1rem;
+}
+
+.list>*+* {
+  margin-top: var(--gap-space, 1rem);
+}
+
+/* BLOCKS */
+.item {
+  --square-size: 1.75rem;
+  background-color: var(--primary);
+  color: var(--fg-dark);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: grid;
+  grid-template-columns: var(--square-size) auto var(--square-size);
+  gap: 0.5rem;
+}
+
+.item button {
+  border-radius: 50%;
+  height: var(--square-size);
+}
+
+.add {
+  --square-size: 2rem;
+  position: fixed;
+  bottom: 1rem;
+  width: min(40rem, calc(100% - 2rem));
+  display: grid;
+  grid-template-columns: auto var(--square-size);
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--bg-light);
+  color: var(--fg-default);
+  border-radius: 0.75rem;
+}
+
+.add button {
+  border-radius: 50%;
+  height: var(--square-size);
+}
