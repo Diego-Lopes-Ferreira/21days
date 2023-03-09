@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clock</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    main {
+      width: 100%;
+      height: 100vh;
+      background-color: #191919;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    p {
+      font-size: 10rem;
+      color: rgba(255, 255, 255, 0.81);
+      font-family: monospace;
+    }
+
+  </style>
+</head>
+
+<body>
+  <main>
+    <p id="time"></p>
+  </main>
+  <script>
+    const timeElement = document.querySelector("#time");
+    function formatNumber(n) {
+      if (n < 10) return "0" + n.toString();
+      return n.toString();
+    }
+    function setTime() {
+      let date = new Date();
+      let hours = date.getHours();
+      let minutes = date.getMinutes();
+      let seconds = date.getSeconds();
+      timeElement.textContent = formatNumber(hours) + ":" + formatNumber(minutes) + ":" + formatNumber(seconds);;
+      setTimeout(setTime, 1000);
+    }
+    setTime();
+  </script>
+</body>
+
+</html>
